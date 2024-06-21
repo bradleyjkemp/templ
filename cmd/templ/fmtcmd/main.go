@@ -132,5 +132,8 @@ func format(write writer, read reader) (err error) {
 	if err = t.Write(w); err != nil {
 		return fmt.Errorf("formatting error: %w", err)
 	}
+	if src == w.String() {
+		return nil
+	}
 	return write(fileName, w.String())
 }
